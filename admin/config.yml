@@ -1,0 +1,65 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Crear {{collection}} "{{slug}}"'
+    update: 'Actualizar {{collection}} "{{slug}}"'
+    delete: 'Eliminar {{collection}} "{{slug}}"'
+    uploadMedia: 'Subir "{{path}}"'
+    deleteMedia: 'Eliminar "{{path}}"'
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "tour_dates"
+    label: "Próximas Fechas"
+    folder: "data/tour"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Mes", name: "month", widget: "select", options: ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"] }
+      - { label: "Día", name: "day", widget: "number", value_type: "int" }
+      - { label: "Ciudad", name: "city", widget: "string" }
+      - { label: "Venue (ES)", name: "venue_es", widget: "string", default: "Venue por confirmar" }
+      - { label: "Venue (EN)", name: "venue_en", widget: "string", default: "Venue TBA" }
+      - { label: "Estado", name: "status", widget: "select", options: ["SOON", "CONFIRMED", "SOLD OUT"], default: "SOON" }
+      - { label: "Link de boletos (opcional)", name: "ticket_link", widget: "string", required: false }
+
+  - name: "timeline_events"
+    label: "Eventos Timeline"
+    folder: "data/timeline"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Día", name: "day", widget: "number", value_type: "int" }
+      - { label: "Mes", name: "month", widget: "select", options: ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"] }
+      - { label: "Año", name: "year", widget: "number", value_type: "int" }
+      - { label: "Nombre del Evento", name: "event_name", widget: "string" }
+      - { label: "Lugar", name: "location", widget: "string" }
+      - { label: "ID del Evento (para fotos)", name: "event_id", widget: "string", hint: "Ejemplo: foro-indie-rocks, artemis, etc." }
+      - { label: "Fotos", name: "photos", widget: "list", field: { label: "Foto", name: "photo", widget: "image" } }
+
+  - name: "content"
+    label: "Contenido General"
+    files:
+      - file: "data/content.json"
+        label: "Información General"
+        name: "general_content"
+        fields:
+          - { label: "Tagline (ES)", name: "tagline_es", widget: "text" }
+          - { label: "Tagline (EN)", name: "tagline_en", widget: "text" }
+          - { label: "Descripción About (ES)", name: "about_es", widget: "markdown" }
+          - { label: "Descripción About (EN)", name: "about_en", widget: "markdown" }
+          - label: "Contacto"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email Booking", name: "booking_email", widget: "string" }
+              - { label: "Teléfono Management", name: "management_phone", widget: "string" }
+              - { label: "Link Spotify", name: "spotify_link", widget: "string" }
+              - { label: "Link Instagram", name: "instagram_link", widget: "string" }
+              - { label: "Link YouTube", name: "youtube_link", widget: "string" }
+              - { label: "Link TikTok", name: "tiktok_link", widget: "string" }
+              - { label: "Link Linktree", name: "linktree_link", widget: "string" }
+

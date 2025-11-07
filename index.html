@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDWEEK - Banda Musical Mexicana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <img src="logo.png" alt="MIDWEEK" class="loading-logo" style="height: 100px;">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="MIDWEEK" class="logo-img">
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link" data-es="Home" data-en="Home">Home</a>
+                <a href="#about" class="nav-link" data-es="Nosotros" data-en="About">Nosotros</a>
+                <a href="#timeline" class="nav-link" data-es="Trayectoria" data-en="Timeline">Trayectoria</a>
+                <a href="#tour" class="nav-link" data-es="Fechas" data-en="Tour">Fechas</a>
+                <a href="#contact" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a>
+                <button class="language-btn" id="languageBtn">EN</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-logo">
+                    <img src="logo.png" alt="MIDWEEK" class="hero-logo-img">
+                </div>
+                <h1 class="hero-title">MIDWEEK</h1>
+                <p class="hero-tagline" data-es="Desperdiciar el tiempo en lo que amas no es perderlo, es vivirlo." data-en="Wasting time on what you love isn't losing it, it's living it.">Desperdiciar el tiempo en lo que amas no es perderlo, es vivirlo.</p>
+                <div class="hero-buttons">
+                    <a href="https://linktr.ee/midweek.music" target="_blank" class="btn btn-primary" data-es="Escúchanos" data-en="Listen">Escúchanos</a>
+                    <a href="#contact" class="btn btn-secondary" data-es="Contacto" data-en="Contact">Contacto</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="carousel-container">
+                <div class="carousel-slide active" style="background-image: url('Carrusel menu/foto acostados.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('Carrusel menu/Midweek_Foro_IndieRocks-14 .jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('Carrusel menu/cherryriverindierocks.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('Carrusel menu/Midweek_Shoot-19 .jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('Carrusel menu/busch indierocks.jpg')"></div>
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title" data-es="Nosotros" data-en="About Us">Nosotros</h2>
+                    <p class="about-description" data-es="Somos cinco amigos que comparten un amor por la música. No buscamos impresionar, buscamos conectar. Nuestra historia está hecha de ensayos, carcajadas y noches que se sienten eternas." data-en="We are five friends who share a love for music. We don't seek to impress, we seek to connect. Our story is made of rehearsals, laughter and nights that feel eternal.">
+                        Somos cinco amigos que comparten un amor por la música. No buscamos impresionar, 
+                        buscamos conectar. Nuestra historia está hecha de ensayos, carcajadas y noches 
+                        que se sienten eternas.
+                    </p>
+                </div>
+                <div class="about-images">
+                    <div class="image-grid">
+                        <div class="about-image">
+                            <img data-src="sobre nosotros/flow .jpg" alt="MIDWEEK flow" class="about-img lazy" loading="lazy">
+                        </div>
+                        <div class="about-image">
+                            <img data-src="sobre nosotros/busch.jpg" alt="MIDWEEK busch" class="about-img lazy" loading="lazy">
+                        </div>
+                        <div class="about-image">
+                            <img data-src="sobre nosotros/cherry.jpg" alt="MIDWEEK cherry" class="about-img lazy" loading="lazy">
+                        </div>
+                        <div class="about-image">
+                            <img data-src="sobre nosotros/muria.jpg" alt="MIDWEEK muria" class="about-img lazy" loading="lazy">
+                        </div>
+                        <div class="about-image">
+                            <img data-src="sobre nosotros/river.jpg" alt="MIDWEEK river" class="about-img lazy" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="timeline">
+        <div class="container">
+            <h2 class="section-title" data-es="Trayectoria" data-en="Timeline">Trayectoria</h2>
+            <div class="timeline-container">
+                <div class="timeline-item" data-event="pepsi-callejon">
+                    <div class="timeline-date">
+                        <span class="timeline-day">17</span>
+                        <span class="timeline-month">NOV</span>
+                        <span class="timeline-year">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Pepsi Callejón del Sabor</h3>
+                        <p class="timeline-location">Pepsi Callejón del Sabor</p>
+                        <button class="timeline-view-photos" data-es="Ver fotos" data-en="View photos">Ver fotos</button>
+                    </div>
+                </div>
+                <div class="timeline-item" data-event="artemis">
+                    <div class="timeline-date">
+                        <span class="timeline-day">07</span>
+                        <span class="timeline-month">JUN</span>
+                        <span class="timeline-year">2025</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Artemis</h3>
+                        <p class="timeline-location">Artemis</p>
+                        <button class="timeline-view-photos" data-es="Ver fotos" data-en="View photos">Ver fotos</button>
+                    </div>
+                </div>
+                <div class="timeline-item" data-event="foro-indie-rocks">
+                    <div class="timeline-date">
+                        <span class="timeline-day">01</span>
+                        <span class="timeline-month">AGO</span>
+                        <span class="timeline-year">2025</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Foro Indie Rocks</h3>
+                        <p class="timeline-location">Foro Indie Rocks</p>
+                        <button class="timeline-view-photos" data-es="Ver fotos" data-en="View photos">Ver fotos</button>
+                    </div>
+                </div>
+                <div class="timeline-item" data-event="opening-act-balu">
+                    <div class="timeline-date">
+                        <span class="timeline-day">03</span>
+                        <span class="timeline-month">OCT</span>
+                        <span class="timeline-year">2025</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Opening Act Balu Brigada</h3>
+                        <p class="timeline-location">Opening Act Balu Brigada</p>
+                        <button class="timeline-view-photos" data-es="Ver fotos" data-en="View photos">Ver fotos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Modal -->
+    <div class="photo-modal" id="photoModal">
+        <div class="photo-modal-content">
+            <button class="photo-modal-close" id="modalClose">&times;</button>
+            <div class="photo-carousel-container">
+                <button class="carousel-btn carousel-prev" id="carouselPrev">‹</button>
+                <div class="photo-carousel" id="photoCarousel"></div>
+                <button class="carousel-btn carousel-next" id="carouselNext">›</button>
+            </div>
+            <div class="photo-counter" id="photoCounter"></div>
+        </div>
+    </div>
+
+    <!-- Tour Dates Section -->
+    <section id="tour" class="tour">
+        <div class="container">
+            <h2 class="section-title" data-es="Próximas Fechas" data-en="Upcoming Dates">Próximas Fechas</h2>
+            <div class="tour-dates">
+                <div class="tour-item">
+                    <div class="tour-date">
+                        <span class="month">ENE</span>
+                        <span class="day">25</span>
+                    </div>
+                    <div class="tour-info">
+                        <h3>Ciudad de México</h3>
+                        <p data-es="Venue por confirmar" data-en="Venue TBA">Venue por confirmar</p>
+                    </div>
+                    <div class="tour-status">
+                        <span class="status-soon" data-es="PRONTO" data-en="SOON">SOON</span>
+                    </div>
+                </div>
+                <div class="tour-item">
+                    <div class="tour-date">
+                        <span class="month">FEB</span>
+                        <span class="day">15</span>
+                    </div>
+                    <div class="tour-info">
+                        <h3>Guadalajara</h3>
+                        <p data-es="Venue por confirmar" data-en="Venue TBA">Venue por confirmar</p>
+                    </div>
+                    <div class="tour-status">
+                        <span class="status-soon" data-es="PRONTO" data-en="SOON">SOON</span>
+                    </div>
+                </div>
+                <div class="tour-item">
+                    <div class="tour-date">
+                        <span class="month">MAR</span>
+                        <span class="day">08</span>
+                    </div>
+                    <div class="tour-info">
+                        <h3>Monterrey</h3>
+                        <p data-es="Venue por confirmar" data-en="Venue TBA">Venue por confirmar</p>
+                    </div>
+                    <div class="tour-status">
+                        <span class="status-soon" data-es="PRONTO" data-en="SOON">SOON</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merch Section - Hidden for future Shopify integration -->
+    <section id="merch" class="merch" style="display: none;">
+        <div class="container">
+            <h2 class="section-title" data-es="Shop" data-en="Shop">Shop</h2>
+            <div class="merch-content">
+                <div class="merch-placeholder">
+                    <h3 data-es="PRÓXIMAMENTE" data-en="COMING SOON">COMING SOON</h3>
+                    <p data-es="Próximamente tendremos productos exclusivos disponibles" data-en="We will have exclusive products available soon">Próximamente tendremos productos exclusivos disponibles</p>
+                    <div class="merch-buttons">
+                        <button class="btn btn-outline" disabled data-es="Playera" data-en="T-Shirt">Playera</button>
+                        <button class="btn btn-outline" disabled data-es="Vinilo" data-en="Vinyl">Vinilo</button>
+                        <button class="btn btn-outline" disabled data-es="Accesorios" data-en="Accessories">Accesorios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-es="Contacto" data-en="Contact">Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3 data-es="Booking" data-en="Booking">Booking</h3>
+                        <p>midweekplay@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3 data-es="Management" data-en="Management">Management</h3>
+                        <p>+52 55 3177 1932</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://open.spotify.com/artist/midweek" target="_blank" class="social-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                        </svg>
+                        <span>Spotify</span>
+                    </a>
+                    <a href="https://instagram.com/midweek" target="_blank" class="social-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCxRn1DCR8yEjFgNn1Buh5-w" target="_blank" class="social-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://tiktok.com/@midweek" target="_blank" class="social-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                        </svg>
+                        <span>TikTok</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-es="&copy; 2025 Midweek. Todos los derechos reservados." data-en="&copy; 2025 Midweek. All rights reserved.">&copy; 2025 Midweek. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+        ↑
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

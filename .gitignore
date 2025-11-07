@@ -1,0 +1,35 @@
+# Local Netlify folder
+.netlify
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+debug.log
+
+# Backup files
+backup_original_images/
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment variables (si los agregas después)
+.env
+.env.local
