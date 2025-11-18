@@ -41,3 +41,20 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
+  # Cache CSS and JS
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # robots.txt should be accessible
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
