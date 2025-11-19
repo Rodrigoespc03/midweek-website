@@ -373,7 +373,55 @@ function initLanguageToggle() {
 // ============================================
 // PHOTO GALLERY MODAL
 // ============================================
+// Preload cache for images
+const imagePreloadCache = new Map();
+
+function preloadImage(src) {
+    if (imagePreloadCache.has(src)) {
+        return Promise.resolve(imagePreloadCache.get(src));
+    }
+    
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+            imagePreloadCache.set(src, img);
+            resolve(img);
+        };
+        img.onerror = reject;
+        img.src = src;
+    });
+}
+
 function initPhotoGallery() {
+    // Preload images on hover over "Ver fotos" button
+    document.querySelectorAll('.timeline-view-photos').forEach(btn => {
+        const timelineItem = btn.closest('.timeline-item');
+        const eventId = timelineItem?.getAttribute('data-event');
+        
+        if (eventId && photoGalleries[eventId]) {
+            let hoverTimeout;
+            
+            btn.addEventListener('mouseenter', () => {
+                // Preload first image immediately
+                const photos = photoGalleries[eventId];
+                if (photos && photos.length > 0) {
+                    preloadImage(photos[0]).catch(() => {});
+                    
+                    // Preload rest after a short delay
+                    hoverTimeout = setTimeout(() => {
+                        photos.slice(1, 3).forEach(src => {
+                            preloadImage(src).catch(() => {});
+                        });
+                    }, 300);
+                }
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                clearTimeout(hoverTimeout);
+            });
+        }
+    });
+    
     function openPhotoGallery(eventId) {
         const photos = photoGalleries[eventId];
         if (!photos || photos.length === 0) {
@@ -392,13 +440,46 @@ function initPhotoGallery() {
         
         carousel.innerHTML = '';
         
-        photos.forEach((src, index) => {
+        // Show loading state
+        const loadingIndicator = document.createElement('div');
+        loadingIndicator.className = 'photo-loading';
+        loadingIndicator.innerHTML = '<div class="loading-spinner"></div>';
+        carousel.appendChild(loadingIndicator);
+        
+        // Load first image immediately (should be preloaded)
+        const firstImg = document.createElement('img');
+        firstImg.alt = 'Foto 1';
+        firstImg.classList.add('active');
+        
+        preloadImage(photos[0])
+            .then(() => {
+                firstImg.src = photos[0];
+                loadingIndicator.remove();
+                carousel.appendChild(firstImg);
+            })
+            .catch(() => {
+                firstImg.src = photos[0];
+                loadingIndicator.remove();
+                carousel.appendChild(firstImg);
+            });
+        
+        // Load remaining images progressively
+        photos.slice(1).forEach((src, index) => {
             const img = document.createElement('img');
-            img.src = src;
-            img.alt = `Foto ${index + 1}`;
-            img.loading = 'eager';
-            img.classList.toggle('active', index === 0);
+            img.alt = `Foto ${index + 2}`;
+            img.loading = 'lazy';
             carousel.appendChild(img);
+            
+            // Load next images in background
+            setTimeout(() => {
+                preloadImage(src)
+                    .then(() => {
+                        img.src = src;
+                    })
+                    .catch(() => {
+                        img.src = src;
+                    });
+            }, (index + 1) * 200);
         });
         
         updatePhotoCounter();
@@ -421,6 +502,12 @@ function initPhotoGallery() {
         
         isTransitioning = true;
         const images = document.querySelectorAll('#photoCarousel img');
+        
+        // Preload next image before showing
+        const nextIndex = (index + 1) % currentGallery.length;
+        if (currentGallery[nextIndex]) {
+            preloadImage(currentGallery[nextIndex]).catch(() => {});
+        }
         
         images.forEach((img, i) => {
             img.classList.toggle('active', i === index);
