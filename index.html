@@ -2,14 +2,57 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    
+    <!-- Primary Meta Tags -->
     <title>MIDWEEK - Banda Musical Mexicana</title>
+    <meta name="title" content="MIDWEEK - Banda Musical Mexicana">
+    <meta name="description" content="Desperdiciar el tiempo en lo que amas no es perderlo, es vivirlo. Somos cinco amigos que comparten un amor por la música. Conciertos, música y más.">
+    <meta name="keywords" content="MIDWEEK, banda mexicana, música, conciertos, indie, rock, México">
+    <meta name="author" content="MIDWEEK">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://midweek.com/">
+    <meta property="og:title" content="MIDWEEK - Banda Musical Mexicana">
+    <meta property="og:description" content="Desperdiciar el tiempo en lo que amas no es perderlo, es vivirlo. Somos cinco amigos que comparten un amor por la música.">
+    <meta property="og:image" content="https://midweek.com/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="MIDWEEK">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://midweek.com/">
+    <meta name="twitter:title" content="MIDWEEK - Banda Musical Mexicana">
+    <meta name="twitter:description" content="Desperdiciar el tiempo en lo que amas no es perderlo, es vivirlo. Somos cinco amigos que comparten un amor por la música.">
+    <meta name="twitter:image" content="https://midweek.com/logo.png">
+    
+    <!-- Performance & Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://identity.netlify.com">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="logo.png" as="image" type="image/png">
+    <link rel="preload" href="Carrusel menu/foto acostados.jpg" as="image">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script" crossorigin>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <!-- Netlify Identity (defer for performance) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -27,7 +70,6 @@
                 <a href="#home" class="nav-link" data-es="Home" data-en="Home">Home</a>
                 <a href="#about" class="nav-link" data-es="Nosotros" data-en="About">Nosotros</a>
                 <a href="#timeline" class="nav-link" data-es="Trayectoria" data-en="Timeline">Trayectoria</a>
-                <a href="#tour" class="nav-link" data-es="Fechas" data-en="Tour">Fechas</a>
                 <a href="#contact" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a>
                 <button class="language-btn" id="languageBtn">EN</button>
             </div>
@@ -57,10 +99,10 @@
         <div class="hero-background">
             <div class="carousel-container">
                 <div class="carousel-slide active" style="background-image: url('Carrusel menu/foto acostados.jpg')"></div>
-                <div class="carousel-slide" style="background-image: url('Carrusel menu/Midweek_Foro_IndieRocks-14 .jpg')"></div>
-                <div class="carousel-slide" style="background-image: url('Carrusel menu/cherryriverindierocks.jpg')"></div>
-                <div class="carousel-slide" style="background-image: url('Carrusel menu/Midweek_Shoot-19 .jpg')"></div>
-                <div class="carousel-slide" style="background-image: url('Carrusel menu/busch indierocks.jpg')"></div>
+                <div class="carousel-slide" data-bg="Carrusel menu/Midweek_Foro_IndieRocks-14 .jpg"></div>
+                <div class="carousel-slide" data-bg="Carrusel menu/cherryriverindierocks.jpg"></div>
+                <div class="carousel-slide" data-bg="Carrusel menu/Midweek_Shoot-19 .jpg"></div>
+                <div class="carousel-slide" data-bg="Carrusel menu/busch indierocks.jpg"></div>
             </div>
             <div class="hero-overlay"></div>
         </div>
@@ -171,8 +213,8 @@
         </div>
     </div>
 
-    <!-- Tour Dates Section -->
-    <section id="tour" class="tour">
+    <!-- Tour Dates Section (Hidden but structure maintained) -->
+    <section id="tour" class="tour" style="display: none;">
         <div class="container">
             <h2 class="section-title" data-es="Próximas Fechas" data-en="Upcoming Dates">Próximas Fechas</h2>
             <div class="tour-dates">
@@ -294,8 +336,8 @@
         ↑
     </button>
 
-    <script src="script.js"></script>
-    <script>
+    <script src="script.js" defer></script>
+    <script defer>
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) {

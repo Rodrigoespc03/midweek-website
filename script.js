@@ -133,26 +133,33 @@ function initMobileMenu() {
 // ============================================
 function initScrollAnimations() {
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -100px 0px'
     };
+    
+    // Use requestAnimationFrame for better performance
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = (callback) => setTimeout(callback, 16);
+    }
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                if (entry.target.classList.contains('about-text')) {
-                    entry.target.classList.add('slide-in-left');
-                } else if (entry.target.classList.contains('about-images')) {
-                    entry.target.classList.add('slide-in-right');
-                } else if (entry.target.classList.contains('timeline-item')) {
-                    entry.target.classList.add('fade-in');
-                    entry.target.style.animationDelay = `${index * 0.2}s`;
-                } else if (entry.target.classList.contains('tour-item')) {
-                    entry.target.classList.add('scale-in');
-                    entry.target.style.animationDelay = `${index * 0.1}s`;
-                } else {
-                    entry.target.classList.add('fade-in');
-                }
+                requestAnimationFrame(() => {
+                    if (entry.target.classList.contains('about-text')) {
+                        entry.target.classList.add('slide-in-left');
+                    } else if (entry.target.classList.contains('about-images')) {
+                        entry.target.classList.add('slide-in-right');
+                    } else if (entry.target.classList.contains('timeline-item')) {
+                        entry.target.classList.add('fade-in');
+                        entry.target.style.animationDelay = `${index * 0.2}s`;
+                    } else if (entry.target.classList.contains('tour-item')) {
+                        entry.target.classList.add('scale-in');
+                        entry.target.style.animationDelay = `${index * 0.1}s`;
+                    } else {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
             }
         });
     }, observerOptions);
@@ -200,16 +207,48 @@ function initHeroCarousel() {
     
     if (totalSlides === 0) return;
     
+    // Progressive image loading for carousel
+    function loadCarouselImage(slide, index) {
+        const bgUrl = slide.dataset.bg;
+        if (bgUrl && !slide.style.backgroundImage) {
+            const img = new Image();
+            img.onload = () => {
+                slide.style.backgroundImage = `url('${bgUrl}')`;
+                slide.classList.add('loaded');
+            };
+            img.src = bgUrl;
+        }
+    }
+    
+    // Load first 2 images immediately, rest progressively
+    slides.forEach((slide, index) => {
+        if (index < 2) {
+            loadCarouselImage(slide, index);
+        } else {
+            // Load next images when previous ones are visible
+            setTimeout(() => {
+                loadCarouselImage(slide, index);
+            }, index * 1000);
+        }
+    });
+    
     function showSlide(index) {
         if (isTransitioning) return;
         isTransitioning = true;
         
+        // Preload next slide image
+        const nextIndex = (index + 1) % totalSlides;
+        loadCarouselImage(slides[nextIndex], nextIndex);
+        
         slides.forEach(slide => slide.classList.remove('active'));
         slides[index].classList.add('active');
         
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 500);
+        // Use requestAnimationFrame for smoother transitions
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 500);
+        });
     }
     
     function nextSlide() {
@@ -257,23 +296,32 @@ function initLazyLoading() {
             if (entry.isIntersecting) {
                 const img = entry.target;
                 if (img.dataset.src) {
-                    const newImg = new Image();
-                    newImg.onload = () => {
+                    // Use native loading="lazy" if supported, otherwise use Image object
+                    if ('loading' in HTMLImageElement.prototype) {
                         img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
                         img.classList.remove('lazy');
                         img.classList.add('loaded');
-                    };
-                    newImg.onerror = () => {
-                        img.classList.remove('lazy');
-                    };
-                    newImg.src = img.dataset.src;
+                    } else {
+                        const newImg = new Image();
+                        newImg.onload = () => {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            img.classList.remove('lazy');
+                            img.classList.add('loaded');
+                        };
+                        newImg.onerror = () => {
+                            img.classList.remove('lazy');
+                        };
+                        newImg.src = img.dataset.src;
+                    }
                     imageObserver.unobserve(img);
                 }
             }
         });
     }, {
-        rootMargin: '50px 0px',
-        threshold: 0.1
+        rootMargin: '100px 0px', // Load earlier for smoother experience
+        threshold: 0.01
     });
     
     document.querySelectorAll('img[data-src]').forEach(img => {
